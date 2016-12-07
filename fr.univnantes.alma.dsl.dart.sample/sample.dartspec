@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dart:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dart="http://www.obeo.fr/dsl/2014/dart">
   <packages>
-    <assets xsi:type="dart:Folder" name="lib">
+    <assets xsi:type="dart:Folder">
       <assets xsi:type="dart:Folder" name="components">
         <assets xsi:type="dart:HTML" name="agenda.html" uses="//@packages.0/@assets.2/@assets.2/@assets.2 //@packages.0/@assets.2/@assets.0/@assets.0"/>
         <assets xsi:type="dart:Component" name="Agenda" documentation="" extends="//@packages.0/@assets.0/@assets.0/@assets.2" template="//@packages.0/@assets.0/@assets.0/@assets.0" selector="agenda"/>
@@ -42,7 +42,7 @@
         </assets>
       </assets>
       <assets xsi:type="dart:Folder" name="models">
-        <assets xsi:type="dart:Class" name="AgendaItem">
+        <assets xsi:type="dart:Class" name="Geo" abstract="true">
           <fields name="description">
             <type xsi:type="dart:Class" href="../../plugin/org.obeonetwork.dsl.dart/model/dartlang.dartspec#//@packages.0/@assets.2/@assets.8"/>
           </fields>
@@ -53,7 +53,7 @@
             <type xsi:type="dart:Class" href="../../plugin/org.obeonetwork.dsl.dart/model/dartlang.dartspec#//@packages.0/@assets.2/@assets.4"/>
           </fields>
         </assets>
-        <assets xsi:type="dart:Class" name="Call">
+        <assets xsi:type="dart:Class" name="AbstractGeo" abstract="true">
           <fields name="id">
             <type xsi:type="dart:Class" href="../../plugin/org.obeonetwork.dsl.dart/model/dartlang.dartspec#//@packages.0/@assets.2/@assets.8"/>
           </fields>
@@ -61,13 +61,20 @@
             <type xsi:type="dart:Class" href="../../plugin/org.obeonetwork.dsl.dart/model/dartlang.dartspec#//@packages.0/@assets.2/@assets.8"/>
           </fields>
         </assets>
-        <assets xsi:type="dart:Class" name="User">
+        <assets xsi:type="dart:Class" name="User" extends="//@packages.0/@assets.0/@assets.2/@assets.0">
           <fields name="name">
             <type xsi:type="dart:Class" href="../../plugin/org.obeonetwork.dsl.dart/model/dartlang.dartspec#//@packages.0/@assets.2/@assets.8"/>
           </fields>
           <fields name="isOnline">
             <type xsi:type="dart:Class" href="../../plugin/org.obeonetwork.dsl.dart/model/dartlang.dartspec#//@packages.0/@assets.2/@assets.1"/>
           </fields>
+        </assets>
+        <assets xsi:type="dart:Class" name="ClassName">
+          <fields/>
+          <fields name="variableName"/>
+          <fields name="variableName"/>
+          <fields name="variableName"/>
+          <methods name="operationName"/>
         </assets>
       </assets>
       <assets xsi:type="dart:Folder" name="services">

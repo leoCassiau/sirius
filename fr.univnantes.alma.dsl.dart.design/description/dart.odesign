@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="dart" version="11.0.0.201609021200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="dart" version="11.0.0.201609021200">
   <ownedViewpoints name="Architect" modelFileExtension="dartspec">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Class_Diagram" domainClass="dart.Folder" enablePopupBars="true">
       <metamodel href="http://www.obeo.fr/dsl/2014/dart#/"/>
@@ -54,7 +54,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dart.Function" referenceName="methods"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dart.Function" referenceName="methods">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="operationName"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -63,7 +65,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dart.Class" referenceName="assets"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dart.Class" referenceName="assets">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ClassName"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -72,8 +76,18 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dart.Variable" referenceName="fields"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dart.Variable" referenceName="fields">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="variableName"/>
+                </subModelOperations>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Navigate">
+          <ownedTools xsi:type="tool_1:OperationAction" name="goToExplorerDiagram">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Developer']/@ownedRepresentations[name='Explorer_Diagram']"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -107,10 +121,12 @@
       <metamodel href="http://www.obeo.fr/dsl/2014/dart#/"/>
       <defaultLayer name="Default">
         <nodeMappings name="imageClass" semanticCandidatesExpression="feature:eContents" domainClass="dart.Class">
-          <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/fr.univnantes.alma.dsl.dart.design/icons/explorer/asset_512x512.png">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </style>
+          <conditionnalStyles predicateExpression="aql:not (self.oclIsTypeOf(dart::Component) or self.oclIsTypeOf(dart::Controller))">
+            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/fr.univnantes.alma.dsl.dart.design/icons/explorer/asset_512x512.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="imageCss" semanticCandidatesExpression="feature:eContents" domainClass="dart.Stylesheet">
           <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/fr.univnantes.alma.dsl.dart.design/icons/explorer/css_512x512.png">
@@ -182,6 +198,12 @@
               <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Developer']/@ownedRepresentations[name='Explorer_Diagram']"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:OperationAction" name="goToClassDiagram">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Architect']/@ownedRepresentations[name='Class_Diagram']"/>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <toolSections name="add">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="addClass" nodeMappings="//@ownedViewpoints[name='Developer']/@ownedRepresentations[name='Explorer_Diagram']/@defaultLayer/@nodeMappings[name='imageClass']">
@@ -247,4 +269,31 @@
     <entries xsi:type="description:UserFixedColor" red="167" green="219" blue="216" name="turquoise"/>
     <entries xsi:type="description:UserFixedColor" red="224" green="228" blue="204" name="beach storm"/>
   </userColorsPalettes>
+  <extensions xsi:type="properties:ViewExtensionDescription" identifier="Properties">
+    <metamodels href="http://www.obeo.fr/dsl/2014/dart#/"/>
+    <pages identifier="Default" labelExpression="Page" domainClass="dart.Class" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.0"/>
+    <groups identifier="Default" labelExpression="Group" domainClass="dart.Class" semanticCandidateExpression="var:self">
+      <controls xsi:type="properties:TextDescription" labelExpression="Name" valueExpression="aql:self.name">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties:CheckboxDescription" labelExpression="Abstract" valueExpression="aql:self.abstract">
+        <initialOperation>
+          <firstModelOperations xsi:type="tool_1:SetValue" featureName="abstract" valueExpression="var:newValue"/>
+        </initialOperation>
+      </controls>
+      <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" labelExpression="Extends" referenceNameExpression="extends" referenceOwnerExpression="var:self"/>
+      <validationSet>
+        <propertyValidationRules name="Abstract Name" level="WARNING" message="The element is not prefixed by Abstract" targets="//@extensions.0/@groups.0/@controls.0">
+          <audits auditExpression="aql:(self.abstract == true and self.name.startsWith('Abstract')) or self.abstract == false"/>
+          <fixes name="prefixAbstract">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Abstract'.concat(self.name)"/>
+            </initialOperation>
+          </fixes>
+        </propertyValidationRules>
+      </validationSet>
+    </groups>
+  </extensions>
 </description:Group>
